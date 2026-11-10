@@ -1,231 +1,97 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pix Premiado</title>
-
-  <!-- Google Analytics 4 -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-E7P8CTY0Y0"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-E7P8CTY0Y0');
-
-    function rastrear(nome, extra) {
-      gtag('event', nome, Object.assign({ transport_type: 'beacon' }, extra || {}));
-    }
-  </script>
-
+  <meta name="robots" content="index,follow">
+  <title>Política de Privacidade — Gmail Email Sender</title>
+  <meta name="description" content="Política de Privacidade do Gmail Email Sender, aplicativo desktop que envia mensagens em nome da conta Gmail autorizada pelo usuário.">
   <style>
+    :root { color-scheme: light; --text:#202124; --muted:#5f6368; --line:#dadce0; --link:#1a73e8; --bg:#f8f9fa; }
     * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      min-height: 100vh;
-      min-height: 100dvh;
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      padding: 20px;
-      font-family: -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-      background: linear-gradient(160deg, #04763E, #024a27);
-      color: #1f2933;
-    }
-    .card {
-      width: 100%;
-      max-width: 420px;
-      margin: auto;
-      background: #fff;
-      border-radius: 20px;
-      padding: 32px 24px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
-    }
-    .icone { font-size: 56px; line-height: 1; margin-bottom: 8px; }
-    h1 { font-size: 24px; margin: 8px 0 4px; }
-    .sub { color: #52606d; margin: 0 0 20px; font-size: 15px; }
-    .tag {
-      display: inline-block;
-      background: #e3f2ea;
-      color: #04763E;
-      font-weight: 700;
-      border-radius: 999px;
-      padding: 6px 16px;
-      margin-bottom: 20px;
-      font-size: 14px;
-    }
-    .btn {
-      display: block;
-      width: 100%;
-      padding: 16px;
-      border-radius: 14px;
-      font-size: 18px;
-      font-weight: 700;
-      text-decoration: none;
-      text-align: center;
-      margin-top: 12px;
-    }
-    .btn-principal { background: #04763E; color: #fff; }
-    .btn-secundario { background: #fff; color: #04763E; border: 2px solid #04763E; }
-
-    /* Botão do YouTube: borda vermelha e ícone à esquerda */
-    .btn-youtube {
-      background: #fff;
-      color: #c4302b;
-      border: 2px solid #e62117;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    .btn-youtube svg { width: 26px; height: 26px; flex-shrink: 0; fill: #FF0000; }
-
-    .btn-pequeno {
-      font-size: 14px;
-      padding: 10px;
-    }
-    .loader {
-      width: 28px; height: 28px;
-      border: 4px solid #d9e2ec;
-      border-top-color: #04763E;
-      border-radius: 50%;
-      margin: 0 auto 12px;
-      animation: gira 0.9s linear infinite;
-    }
-    @keyframes gira { to { transform: rotate(360deg); } }
-    #ajuda { display: none; margin-top: 24px; text-align: left; }
-    #ajuda h2 { font-size: 18px; margin: 0 0 8px; text-align: center; }
-    #ajuda p, #ajuda li { font-size: 16px; color: #52606d; line-height: 1.5; }
-    #ajuda ol { padding-left: 20px; margin: 8px 0 0; }
-
-    /* Botão flutuante do WhatsApp */
-    .whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 9999;
-      height: 60px;
-      padding: 0 13px;
-      border-radius: 30px;
-      background: #25D366;
-      display: flex;
-      align-items: center;
-      box-shadow: 0 6px 16px rgba(0, 0, 0, .35);
-      text-decoration: none;
-    }
-    .whatsapp svg { width: 34px; height: 34px; fill: #fff; flex-shrink: 0; }
-    .whatsapp:active { transform: scale(.94); }
-
-    /* Texto "Dúvidas?": aparece, fica alguns segundos e some */
-    .whatsapp .rotulo {
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
-      white-space: nowrap;
-      overflow: hidden;
-      max-width: 0;
-      padding-left: 0;
-      opacity: 0;
-      animation: rotulo 6s ease-in-out 3s forwards;
-    }
-    @keyframes rotulo {
-      0%   { max-width: 0;    padding-left: 0;   opacity: 0; }
-      12%  { max-width: 100px; padding-left: 8px; opacity: 1; }
-      85%  { max-width: 100px; padding-left: 8px; opacity: 1; }
-      100% { max-width: 0;    padding-left: 0;   opacity: 0; }
-    }
+    body { margin:0; padding:32px 16px; background:var(--bg); color:var(--text); font:16px/1.65 Arial, Helvetica, sans-serif; }
+    main { max-width:900px; margin:0 auto; padding:36px; background:#fff; border:1px solid var(--line); border-radius:12px; }
+    h1 { margin:0 0 8px; font-size:30px; line-height:1.2; }
+    h2 { margin:30px 0 8px; font-size:21px; }
+    p, li { color:#303134; }
+    a { color:var(--link); overflow-wrap:anywhere; }
+    .updated, .note { color:var(--muted); }
+    .note { padding:14px 16px; border-left:4px solid #1a73e8; background:#f1f6fe; border-radius:4px; }
+    ul { padding-left:24px; }
+    footer { margin-top:36px; padding-top:18px; border-top:1px solid var(--line); color:var(--muted); font-size:14px; }
+    @media (max-width:600px) { body { padding:0; } main { padding:24px 18px; border:0; border-radius:0; } h1 { font-size:25px; } }
   </style>
 </head>
 <body>
-  <main class="card">
-    <div class="icone">🎟️</div>
-    <h1>Pix Premiado</h1>
-    <p class="sub" id="status">Abrindo o app para você...</p>
-    <div class="loader" id="loader"></div>
+<main>
+  <h1>Política de Privacidade — Gmail Email Sender</h1>
+  <p class="updated"><strong>Última atualização:</strong> 10 de novembro de 2026.</p>
 
-    <div id="tag" class="tag" style="display:none"></div>
+  <p>Esta Política de Privacidade explica como o aplicativo desktop <strong>Gmail Email Sender</strong> (“Aplicativo”) trata informações durante a conexão com uma conta Google e o envio de mensagens por meio da Gmail API. O Aplicativo é uma ferramenta local para Windows, operada pelo próprio usuário em seu computador.</p>
 
-    <a id="baixar" class="btn btn-principal"
-       href="https://github.com/fill93/pix_premiado_deeplink/releases/latest/download/pix-premiado.apk">
-      Baixar o App
-    </a>
+  <h2>1. Responsável e contato</h2>
+  <p>Para dúvidas, solicitações relacionadas a esta Política ou ao tratamento de dados pelo Aplicativo, entre em contato pelo e-mail <a href="mailto:filipepimentel.fp@gmail.com">filipepimentel.fp@gmail.com</a>.</p>
 
-    <section id="ajuda">
-      <ol>
-        <li>Qualquer aviso de segurança é normal, acontece porque o download não é da PlayStore.</li>
-        <li>Abra o arquivo baixado e toque em <b>Instalar</b>.</li>
-        <li>Se o Android avisar sobre "apps desconhecidos", toque em <b>configurações</b> e <b>permitir a instalação</b>.</li>
-      </ol>
-      <br>
-      <a id="ajuda-whatsapp" class="btn btn-secundario btn-pequeno"
-         href="https://wa.me/558698066260?text=Ol%C3%A1%2C%20vim%20pelo%20b%C3%B4nus%20de%20cadastro%20do%20Pix%20Premiado."
-         target="_blank" rel="noopener">
-        Temos um bônus disponível pra você!<br>Falar no WhatsApp
-      </a>
+  <h2>2. Informações tratadas pelo Aplicativo</h2>
+  <p>Conforme as funções utilizadas pelo usuário, o Aplicativo pode tratar as seguintes informações:</p>
+  <ul>
+    <li><strong>Dados da conta Google autorizada:</strong> endereço de e-mail da conta conectada, utilizado para identificar a conta remetente.</li>
+    <li><strong>Dados de autorização:</strong> credenciais OAuth e token de acesso/atualização emitidos pelo Google para permitir a operação autorizada. O Aplicativo solicita o escopo <code>https://www.googleapis.com/auth/gmail.send</code>, além dos escopos de identificação <code>openid</code> e <code>email</code>.</li>
+    <li><strong>Dados da campanha:</strong> nome interno da campanha, assunto, nome do remetente e conteúdo HTML informado pelo usuário.</li>
+    <li><strong>Dados dos destinatários:</strong> endereços de e-mail importados pelo usuário de arquivos CSV, além do estado do processamento, número de tentativas, data/hora do envio, identificador retornado pelo Gmail e mensagens de erro.</li>
+    <li><strong>Lista de supressão:</strong> endereços que o usuário importa para impedir novos envios, por exemplo, contatos que solicitaram descadastramento ou que tiveram rejeição permanente.</li>
+  </ul>
+  <p>O Aplicativo não solicita acesso para ler, pesquisar, excluir ou modificar mensagens da caixa de entrada, contatos, arquivos do Google Drive ou calendário. A permissão Gmail usada para a operação de envio é limitada ao escopo <code>gmail.send</code>.</p>
 
-      <a id="ajuda-youtube" class="btn btn-youtube btn-pequeno"
-         href="https://www.youtube.com/watch?v=MS-NM920EKk"
-         target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-        </svg>
-        <span>Ver tutorial de instalação</span>
-      </a>
-    </section>
-  </main>
+  <h2>3. Como as informações são utilizadas</h2>
+  <p>As informações são utilizadas exclusivamente para executar as funções solicitadas pelo usuário, incluindo:</p>
+  <ul>
+    <li>identificar a conta Google que será utilizada como remetente;</li>
+    <li>montar e enviar, por meio da Gmail API, uma mensagem individual para cada endereço selecionado pelo usuário;</li>
+    <li>manter uma fila local de destinatários e registrar o andamento dos envios;</li>
+    <li>evitar o reenvio automático de mensagens já confirmadas ou cujo resultado seja incerto;</li>
+    <li>respeitar a lista local de supressão e gerar relatórios de processamento.</li>
+  </ul>
+  <p>O Aplicativo não utiliza os dados obtidos por meio das APIs do Google para publicidade, criação de perfis, venda de dados, análise de conteúdo para fins próprios ou treinamento de modelos de inteligência artificial.</p>
 
-  <!-- Botão flutuante do WhatsApp -->
-  <a class="whatsapp"
-     href="https://wa.me/558698066260?text=Ol%C3%A1!%20Preciso%20de%20ajuda%20para%20baixar%20o%20app%20Pix%20Premiado."
-     target="_blank" rel="noopener" aria-label="Dúvidas? Fale no WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/>
-    </svg>
-    <span class="rotulo">Dúvidas?</span>
-  </a>
+  <h2>4. Como o Gmail e o Google processam os dados</h2>
+  <p>Quando o usuário solicita o envio, o Aplicativo transmite à infraestrutura do Google, pela Gmail API, os dados necessários para realizar aquela mensagem: endereço do destinatário, endereço e nome do remetente, assunto e conteúdo da mensagem em formato HTML e texto simples. O Google processa esses dados para executar a entrega do e-mail conforme os serviços e políticas próprios do Google.</p>
+  <p>O Aplicativo também consulta o serviço de identificação OAuth do Google para obter o endereço de e-mail da conta autorizada. Não consulta o conteúdo das mensagens recebidas nem utiliza a conta para qualquer finalidade diferente das funções descritas nesta Política.</p>
 
-  <script>
-    var tag = new URLSearchParams(location.search).get("tag") || "";
-    var link = "pixpremiado://app?tag=" + encodeURIComponent(tag);
+  <h2>5. Armazenamento e retenção</h2>
+  <p>As listas importadas, campanhas, conteúdo HTML, relatórios, estados da fila, lista de supressão e tokens OAuth são armazenados localmente no computador em que o Aplicativo é executado, principalmente na pasta <code>data</code> e no banco de dados SQLite do Aplicativo. O arquivo <code>credentials.json</code> contém a identificação da credencial OAuth criada pelo próprio usuário no Google Cloud.</p>
+  <p>O Aplicativo não mantém, por conta própria, um servidor central ou banco de dados remoto para armazenar essas informações. Os dados locais permanecem no computador até que o usuário os exclua. O usuário pode apagar os dados da campanha ou a pasta de dados para removê-los do dispositivo, observando que isso também elimina o histórico e a possibilidade de retomar a fila.</p>
+  <p>A exclusão do token local não revoga, por si só, a autorização concedida ao Google. Para revogar o acesso, o usuário deve removê-lo nas configurações da Conta Google: <a href="https://myaccount.google.com/permissions" target="_blank" rel="noopener noreferrer">Permissões da Conta Google</a>.</p>
 
-    if (tag) {
-      var el = document.getElementById("tag");
-      el.textContent = "Rifa: " + tag;
-      el.style.display = "inline-block";
-    }
+  <h2>6. Compartilhamento e terceiros</h2>
+  <p>O Aplicativo não vende, aluga nem compartilha listas de contatos com anunciantes ou corretores de dados. O único compartilhamento externo inerente à função de envio ocorre com o Google, que recebe os dados da mensagem para processá-la pela Gmail API. O conteúdo também será encaminhado pelos servidores de e-mail envolvidos na entrega ao destinatário.</p>
+  <p>O usuário pode utilizar links, imagens ou outros recursos externos no HTML que inserir. Quando um destinatário abre a mensagem, esses recursos podem ser solicitados diretamente aos respectivos servidores, sujeitos às políticas desses terceiros. O usuário é responsável pelo conteúdo e pelos recursos externos incluídos na campanha.</p>
 
-    // Rastreamento de cliques
-    rastrear("pagina_aberta", { rifa: tag });
+  <h2>7. Segurança</h2>
+  <p>O acesso à conta Google utiliza OAuth 2.0, sem que o Aplicativo solicite ou armazene a senha da conta Google. Os tokens e o banco de dados ficam em arquivos locais. O Aplicativo não oferece armazenamento remoto desses arquivos e não afirma que eles sejam criptografados pelo próprio Aplicativo. Por isso, o usuário deve proteger sua sessão do Windows, manter o computador atualizado, restringir o acesso à pasta do Aplicativo e não compartilhar <code>data/token.json</code>, <code>credentials.json</code> ou o banco de dados.</p>
+  <p>Nenhum método de armazenamento ou transmissão é absolutamente seguro. Em caso de suspeita de acesso indevido, o usuário deve revogar imediatamente a autorização do Aplicativo na Conta Google e apagar o token local.</p>
 
-    document.getElementById("baixar").addEventListener("click", function () {
-      rastrear("clicou_baixar_app", { rifa: tag });
-    });
-    document.getElementById("ajuda-whatsapp").addEventListener("click", function () {
-      rastrear("clicou_whatsapp_ajuda", { rifa: tag });
-    });
-    document.getElementById("ajuda-youtube").addEventListener("click", function () {
-      rastrear("clicou_youtube_tutorial", { rifa: tag });
-    });
-    document.querySelector(".whatsapp").addEventListener("click", function () {
-      rastrear("clicou_whatsapp", { rifa: tag });
-    });
+  <h2>8. Descadastramento e responsabilidade pelos destinatários</h2>
+  <p>O Aplicativo pode inserir no rodapé da mensagem um link de e-mail para que o destinatário solicite o descadastramento. O Aplicativo não lê automaticamente as respostas recebidas nem processa automaticamente esses pedidos. O usuário que administra a campanha deve acompanhar as solicitações, importar os endereços correspondentes para a lista de supressão e não enviar novas mensagens a esses destinatários.</p>
+  <p>O usuário é responsável por importar apenas contatos cuja utilização para a comunicação pretendida tenha base legal adequada, respeitar as preferências dos destinatários, manter listas de descadastramento e rejeições permanentes e cumprir a legislação aplicável, incluindo a Lei Geral de Proteção de Dados Pessoais (LGPD).</p>
 
-    // Se o app abrir, a página fica oculta e cancelamos a mensagem de ajuda
-    var abriu = false;
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) abriu = true;
-    });
+  <h2>9. Direitos dos titulares</h2>
+  <p>Solicitações relacionadas a dados tratados pelo operador do Aplicativo podem ser encaminhadas ao contato indicado na Seção 1. Como os dados das campanhas ficam armazenados localmente no computador do usuário, o próprio usuário que opera o Aplicativo é quem normalmente controla sua consulta, correção e exclusão no dispositivo. Os direitos relativos ao tratamento realizado pelo Google devem ser exercidos diretamente junto ao Google, de acordo com os canais e políticas do Google.</p>
 
-    location.href = link;
+  <h2>10. Crianças e adolescentes</h2>
+  <p>O Aplicativo é uma ferramenta de envio de e-mails e não foi desenvolvido especificamente para crianças. O usuário deve avaliar a legitimidade e a adequação de qualquer lista de destinatários, inclusive quando envolver dados de crianças ou adolescentes, e observar as proteções legais aplicáveis.</p>
 
-    setTimeout(function () {
-      if (abriu) return;
-      rastrear("app_nao_abriu", { rifa: tag });
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("status").textContent = "Toque no botão para baixar o App.";
-      document.getElementById("ajuda").style.display = "block";
-    }, 500);
-  </script>
+  <h2>11. Alterações desta Política</h2>
+  <p>Esta Política poderá ser atualizada para refletir alterações nas funcionalidades do Aplicativo, nos serviços utilizados ou nas exigências legais. A versão vigente será publicada nesta página com a respectiva data de atualização.</p>
+
+  <h2>12. Uso de dados das APIs do Google — compromisso de uso limitado</h2>
+  <p>O uso e a transferência de informações recebidas das APIs do Google para qualquer outro aplicativo respeitarão a <a href="https://developers.google.com/terms/api-services-user-data-policy" target="_blank" rel="noopener noreferrer">Política de Dados do Usuário dos Serviços de API do Google</a>, incluindo os requisitos de Uso Limitado (Limited Use).</p>
+
+  <footer>
+    <p><strong>Gmail Email Sender</strong><br>
+    Contato: <a href="mailto:filipepimentel.fp@gmail.com">filipepimentel.fp@gmail.com</a><br>
+    Última atualização: 10 de novembro de 2026.</p>
+  </footer>
+</main>
 </body>
 </html>
