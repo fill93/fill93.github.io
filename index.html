@@ -135,6 +135,7 @@
       85%  { max-width: 100px; padding-left: 8px; opacity: 1; }
       100% { max-width: 0;    padding-left: 0;   opacity: 0; }
     }
+	.info-download { margin: 8px 0 0; font-size: 10px; color: #7b8794; }
   </style>
 </head>
 <body>
@@ -153,10 +154,12 @@
       Baixar o App
     </a>
 
+	<p id="info-download" class="info-download"></p>
+
     <section id="ajuda">
       <ol>
-        <li>Qualquer aviso de segurança é normal, acontece porque o download não é da PlayStore.</li>
-        <li>Abra o arquivo baixado e toque em <b>Instalar</b>.</li>
+        <li><b>A PlayStore não permite apps de rifas</b>, então publicamos no <b>GitHub =)</b><br>Nisso o arquivo.apk pode ser identificado como nocivo, mas é a mensagem padrão do android pra esses casos. Toque em <b>Baixar mesmo assim</b> e siga para a instalação;</li>
+        <li>Abra o arquivo baixado e toque em <b>Instalar</b>;</li>
         <li>Se o Android avisar sobre "apps desconhecidos", toque em <b>configurações</b> e <b>permitir a instalação</b>.</li>
       </ol>
       <br>
@@ -187,47 +190,52 @@
     <span class="rotulo">Dúvidas?</span>
   </a>
 
-  <script>
-    var tag = new URLSearchParams(location.search).get("tag") || "";
-    var link = "pixpremiado://app?tag=" + encodeURIComponent(tag);
+	<script>
+	  var tag = new URLSearchParams(location.search).get("tag") || "";
 
-    if (tag) {
-      var el = document.getElementById("tag");
-      el.textContent = "Rifa: " + tag;
-      el.style.display = "inline-block";
-    }
+	  if (tag) {
+		var el = document.getElementById("tag");
+		el.textContent = "Rifa: " + tag;
+		el.style.display = "inline-block";
+	  }
 
-    // Rastreamento de cliques
-    rastrear("pagina_aberta", { rifa: tag });
+	  // Rastreamento de cliques
+	  rastrear("pagina_aberta", { rifa: tag });
 
-    document.getElementById("baixar").addEventListener("click", function () {
-      rastrear("clicou_baixar_app", { rifa: tag });
-    });
-    document.getElementById("ajuda-whatsapp").addEventListener("click", function () {
-      rastrear("clicou_whatsapp_ajuda", { rifa: tag });
-    });
-    document.getElementById("ajuda-youtube").addEventListener("click", function () {
-      rastrear("clicou_youtube_tutorial", { rifa: tag });
-    });
-    document.querySelector(".whatsapp").addEventListener("click", function () {
-      rastrear("clicou_whatsapp", { rifa: tag });
-    });
+	  document.getElementById("baixar").addEventListener("click", function () {
+		rastrear("clicou_baixar_app", { rifa: tag });
+	  });
+	  document.getElementById("ajuda-whatsapp").addEventListener("click", function () {
+		rastrear("clicou_whatsapp_ajuda", { rifa: tag });
+	  });
+	  document.getElementById("ajuda-youtube").addEventListener("click", function () {
+		rastrear("clicou_youtube_tutorial", { rifa: tag });
+	  });
+	  document.querySelector(".whatsapp").addEventListener("click", function () {
+		rastrear("clicou_whatsapp", { rifa: tag });
+	  });
 
-    // Se o app abrir, a página fica oculta e cancelamos a mensagem de ajuda
-    var abriu = false;
-    document.addEventListener("visibilitychange", function () {
-      if (document.hidden) abriu = true;
-    });
+	  // Conteúdo visível desde o início
+	  document.getElementById("loader").style.display = "none";
+	  document.getElementById("status").textContent = "Rifas de Pix com sorteio pela Loteria Federal, todas as quartas e domingos";
+	  document.getElementById("ajuda").style.display = "block";
+	  
+	  // Informações do download (lidas da última release do GitHub)
+	fetch("https://api.github.com/repos/fill93/pix_premiado_deeplink/releases/latest")
+	  .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+	  .then(function (rel) {
+		var apk = (rel.assets || []).find(function (a) { return a.name === "pix-premiado.apk"; });
+		if (!apk) return;
 
-    location.href = link;
+		var partes = [];
+		if (rel.tag_name) partes.push("Versão " + rel.tag_name.replace(/^v/i, ""));
+		partes.push("Atualizado em " + new Date(apk.updated_at || rel.published_at).toLocaleDateString("pt-BR"));
 
-    setTimeout(function () {
-      if (abriu) return;
-      rastrear("app_nao_abriu", { rifa: tag });
-      document.getElementById("loader").style.display = "none";
-      document.getElementById("status").textContent = "Toque no botão para baixar o App.";
-      document.getElementById("ajuda").style.display = "block";
-    }, 500);
-  </script>
+		document.getElementById("info-download").textContent = partes.join(" • ");
+	  })
+	  .catch(function () {});
+	  
+	</script>
+  
 </body>
 </html>
