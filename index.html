@@ -239,7 +239,7 @@
 		if (!apk) return;
 
 		var partes = [];
-		if (rel.tag_name) partes.push("Versão " + rel.tag_name.replace(/^v/i, ""));
+		if (rel.name) partes.push("Versão " + rel.name.replace(/^v/i, ""));
 		partes.push("Atualizado em " + new Date(apk.updated_at || rel.published_at).toLocaleDateString("pt-BR"));
 
 		document.getElementById("info-download").textContent = partes.join(" • ");
